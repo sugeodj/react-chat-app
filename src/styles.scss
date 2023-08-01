@@ -1,3 +1,39 @@
+@mixin mobile{
+  @media screen and (max-width:480px) {
+    @content
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width:768px) {
+    @content
+  }
+}
+
+@mixin laptop {
+  @media screen and (max-width:1200px) {
+    @content
+  }
+}
+
+/* Customize the scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
@@ -25,6 +61,7 @@ body {
       font-weight: bold;
       font-size: 24px;
       font-family: sans-serif;
+      
     }
 
     .title {
@@ -91,6 +128,9 @@ body {
     height: 80%;
     display: flex;
     overflow: hidden;
+    @include tablet {
+        width: 90%;;
+      }
 
     .sidebar{
       flex: 1; 
@@ -108,7 +148,9 @@ body {
 
         .logo{
           font-weight: bold;
-
+          @include tablet {
+              display: none;
+            }
         }
 
         .user{
@@ -213,6 +255,119 @@ body {
       img{
         height: 24px;
         cursor: pointer;
+      }
+    }
+
+    .messages {
+  background-color: lightgray;
+  padding: 10px;
+  height: calc(100% - 160px);
+  overflow: scroll;
+
+  .message {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    .messageInfo {
+      display: flex;
+      flex-direction: column;
+      color: gray;
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        
+      }
+
+      span{
+        padding: 5px;
+        font-size: 12px;
+      }
+    }
+
+    .messageContent {
+      max-width: fit-content;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      p {
+        background-color: white;
+        padding: 10px 20px;
+        border-radius: 0px 10px 10px 10px;
+        max-width: max-content;
+      }
+
+      img {
+        width: 50px;
+      }
+
+      &.owner {
+        align-items: flex-end;
+        justify-content: flex-end; /* Add this line */
+      }
+    }
+
+    &.owner {
+      flex-direction: row-reverse;
+
+      .messageContent {
+        p {
+          background-color: #8da4f1;
+          color: white;
+          border-radius: 10px 0px 10px 10px;
+        }
+
+        &.owner {
+          justify-content: flex-end; /* Add this line */
+        }
+      }
+    }
+  }
+}
+
+    .input{
+      height: 50px;
+      background-color: white;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      input{
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 18px;
+
+        &::placeholder{
+          color: lightgray;
+        }
+      }
+      .send{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        
+        img{
+          height: 24px;
+          cursor: pointer;
+        }
+
+        button{
+          border: none;
+          border-radius: 15%;
+          padding: 10px 15px;
+          color: white;
+          background-color: #8da4f1;
+        }
       }
     }
   }

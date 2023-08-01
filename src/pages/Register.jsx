@@ -10,9 +10,13 @@ const Register = () => {
                   <input type='text' placeholder='Username...' />
                   <input type='email' placeholder='example@email.com' />
                   <input type='password' placeholder='********' />
-                  <input type='file' />
-                  <button></button>
+                  <input hidden type='file' id="file"/>
+                  <label htmlFor="file">
+                    <img src="" alt="" />
+                  </label>
+                  <button>Sign up</button>
               </form>
+              <p>You do have an account? Login</p>
           </div>
       </div>
   );
